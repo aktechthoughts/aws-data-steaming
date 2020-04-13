@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars_files:
+    - ../vars/vars.yml
+  tasks:
+
+    - name: Putting record to stream
+      shell: |
+        python put_records.py "{{ aws_kinesis_stream_name }}" "{{ file_stream_path }}"
+      register: command_result  
+      failed_when: command_result.rc >= 2
+
+    # - debug:
+    #     msg: "{{ command_result }}"

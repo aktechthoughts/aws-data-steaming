@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars_files:
+    - ../vars/vars.yml
+  tasks:
+
+    - name: Remove Stream
+      shell: |
+        aws kinesis delete-stream --stream-name "{{ aws_kinesis_stream_name }}"
+      register: command_result  
+      failed_when: command_result.rc >= 2
+
+    # - debug:
+    #     msg: "{{ command_result }}"

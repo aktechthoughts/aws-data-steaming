@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  vars_files:
+    - ../vars/vars.yml
+  tasks:
+
+    - name: Create Stream
+      shell: |
+        aws create-delivery-stream \
+                    --delivery-stream-name "{{ aws_kinesis_delivery_stream_name }}" \
+                      --a "{{ aws_kinesis_shard_count }}" \
+                        --region "{{ aws_region_id }}"
+
+      register: command_result  
+      failed_when: command_result.rc >= 2
+
+    # - debug:
+    #     msg: "{{ command_result }}"

@@ -1,0 +1,11 @@
+{
+    "BucketARN" : String,
+    "BufferingHints" : BufferingHints,
+    "CloudWatchLoggingOptions" : CloudWatchLoggingOptions,
+    "CompressionFormat" : String,
+    "EncryptionConfiguration" : EncryptionConfiguration,
+    "ErrorOutputPrefix" : String,
+    "Prefix" : String,
+    "RoleARN" : String
+  }
+  
